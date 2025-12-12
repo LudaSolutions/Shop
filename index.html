@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Таємний Сувій</title>
+<style>
+  /* --- ВАШ СТИЛЬ --- */
+  body {
+    background-image: url("https://as2.ftcdn.net/v2/jpg/03/05/42/51/1000_F_305425131_aPPCTLxFVDPAu35CPm5CCCVWXZsiUdbu.jpg");
+    background-color: #f4e4bc; /* Колір про всяк випадок, якщо картинка не завантажиться */
+    background-position: center;
+    background-size: cover;   
+    font-family: Fantasy, "Papyrus", serif; /* Додав Papyrus для більшої атмосферності */
+    color: black;
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Центруємо по вертикалі теж */
+    height: 100%;
+    font-size: 32px;
+  }
+ 
+  h1, h2, h3 {
+    /* Зробив градієнт темнішим, щоб було видно на світлому папері */
+    background: -webkit-linear-gradient(#555, #000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 10px 0;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  
+  p {
+    font-weight: bold;
+    color: #333; /* Простий колір для тексту, щоб добре читався */
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+ 
+  textarea {
+    width: 300px;
+    height: 150px;
+    border: 2px solid #5c4033; /* Темно-коричнева рамка */
+    background-color: rgba(255, 255, 255, 0.6); /* Напівпрозорий білий */
+    padding: 20px;
+    color: black;
+    font-family: inherit;
+    font-size: 24px;
+    resize: none; /* Щоб не можна було розтягувати */
+    text-align: center;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+
+  button {
+    color: #3e2723;
+    background-color: #d7ccc8;
+    border: 2px solid #5d4037;
+    padding: 10px 30px;
+    font-size: 24px;
+    font-family: inherit;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  
+  button:hover {
+    background
