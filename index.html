@@ -1,80 +1,155 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Таємний Сувій</title>
-<style>
-  /* --- ВАШ СТИЛЬ --- */
-  body {
-    background-image: url("https://as2.ftcdn.net/v2/jpg/03/05/42/51/1000_F_305425131_aPPCTLxFVDPAu35CPm5CCCVWXZsiUdbu.jpg");
-    background-color: #f4e4bc; /* Колір про всяк випадок, якщо картинка не завантажиться */
-    background-position: center;
-    background-size: cover;   
-    font-family: Fantasy, "Papyrus", serif; /* Додав Papyrus для більшої атмосферності */
-    color: black;
-    margin: 0;
-    height: 100vh;
-    overflow: hidden;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luda Elegant Solutions</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400&family=Great+Vibes&display=swap" rel="stylesheet">
 
-  .form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; /* Центруємо по вертикалі теж */
-    height: 100%;
-    font-size: 32px;
-  }
- 
-  h1, h2, h3 {
-    /* Зробив градієнт темнішим, щоб було видно на світлому папері */
-    background: -webkit-linear-gradient(#555, #000);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin: 10px 0;
-    text-transform: uppercase;
-    text-align: center;
-  }
-  
-  p {
-    font-weight: bold;
-    color: #333; /* Простий колір для тексту, щоб добре читався */
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
+    <style>
+        /* --- ЗАГАЛЬНІ НАЛАШТУВАННЯ --- */
+        body {
+            margin: 0;
+            padding: 0;
+            /* Фон: розтягнутий, закріплений (не рухається при прокрутці) */
+            background-image: url('img/background.png');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            
+            /* Основний шрифт */
+            font-family: 'Montserrat', sans-serif;
+            color: #4a4a4a;
+        }
 
-  .hidden {
-    display: none !important;
-  }
- 
-  textarea {
-    width: 300px;
-    height: 150px;
-    border: 2px solid #5c4033; /* Темно-коричнева рамка */
-    background-color: rgba(255, 255, 255, 0.6); /* Напівпрозорий білий */
-    padding: 20px;
-    color: black;
-    font-family: inherit;
-    font-size: 24px;
-    resize: none; /* Щоб не можна було розтягувати */
-    text-align: center;
-    border-radius: 10px;
-    margin-top: 20px;
-  }
+        /* --- ШАПКА (HEADER) --- */
+        header {
+            width: 100%;
+            /* Закріплена майже з самого верху, як ви просили. 
+               position: sticky дозволяє їй залишатися зверху при прокрутці, 
+               або position: relative - щоб вона просто була першою. 
+               Я зроблю так, щоб вона гарно сиділа зверху. */
+            position: relative; 
+            top: 0;
+            z-index: 10;
+            background-color: transparent; /* Прозорий фон під шапкою */
+            text-align: center;
+        }
 
-  button {
-    color: #3e2723;
-    background-color: #d7ccc8;
-    border: 2px solid #5d4037;
-    padding: 10px 30px;
-    font-size: 24px;
-    font-family: inherit;
-    cursor: pointer;
-    margin-top: 20px;
-    border-radius: 5px;
-    font-weight: bold;
-  }
-  
-  button:hover {
-    background
+        /* Малюнок шапки */
+        .banner-img {
+            display: block;
+            width: 100%; /* Розтягнути по ширині */
+            height: auto; /* Зберегти пропорції */
+            max-height: 400px; /* Обмеження висоти, щоб не займало весь екран на великих моніторах (можна прибрати) */
+            object-fit: cover; /* Гарне кадрування */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Легка тінь знизу */
+        }
+
+        /* --- НАВІГАЦІЯ ТА ПОСИЛАННЯ --- */
+        .content-wrapper {
+            /* Біла підкладка з прозорістю, щоб текст читався на фоні background.png */
+            background-color: rgba(255, 255, 255, 0.85); 
+            max-width: 900px;
+            margin: 0 auto; /* По центру */
+            padding: 20px 0;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        /* Соціальні мережі */
+        .social-links {
+            text-align: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #d4c4a8; /* Тонка лінія кольору золота */
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 15px;
+            text-decoration: none;
+            color: #2e4631; /* Темно-зелений (як на лого) */
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #b08d55; /* Золотистий колір при наведенні */
+        }
+
+        /* Головне меню */
+        .main-menu {
+            text-align: center;
+            padding-bottom: 20px;
+        }
+
+        .main-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap; /* Щоб переносилось на мобільному */
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .main-menu li {
+            display: inline-block;
+        }
+
+        /* Стиль кнопок меню */
+        .menu-link {
+            text-decoration: none;
+            color: #4a4a4a;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase; /* Великі літери */
+            letter-spacing: 1px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 10px 15px;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .menu-link:hover {
+            color: #b08d55; /* Золотистий текст */
+            border: 1px solid #b08d55; /* Золотиста рамка */
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Адаптивність для мобільних телефонів */
+        @media (max-width: 600px) {
+            .social-links a {
+                display: block;
+                margin: 10px 0;
+            }
+            .main-menu ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="img/ShopCover.png" alt="Luda Elegant Solutions Banner" class="banner-img">
+    </header>
+
+    <div class="content-wrapper">
+        
+        <div class="social-links">
+            <a href="https://instagram.com/ludasolutions" target="_blank">Instagram</a>
+            <span style="color: #b08d55;">|</span>
+            <a href="https://ludasolutions.etsy.com" target="_blank">Etsy Shop</a>
+        </div>
+
+        <nav class="main-menu
