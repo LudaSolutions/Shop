@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bespoke Order | Luda Atelier</title>
+    <meta name="description" content="Place a bespoke custom bag order with Luda Atelier.">
+    <link rel="stylesheet" href="assets/css/style.css">
+  </head>
+  <body>
+    <div data-header></div>
+
+    <main class="jetform-page">
+      <section class="jetform-full" id="jetform-order">
+        <div class="jetform-full-head">
+          <h1>Custom order form</h1>
+          <p class="lead">Select your bag style, fabric, color, quantity and personalization details.</p>
+        </div>
+
+        <div class="jetform-frame-wrap">
+          <iframe data-jetform-order-frame hidden title="Luda Atelier bespoke order form"></iframe>
+          <div class="form-placeholder" data-jetform-order-placeholder>
+            <div>
+              <h3>Paste your JetForm link once in `assets/js/site.js`</h3>
+              <p>Set `JETFORM_ORDER_FORM_URL` to your JetForm embed URL. The form will fill this full section under the menu.</p>
+              <code>const JETFORM_ORDER_FORM_URL = "YOUR_JETFORM_EMBED_URL";</code>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="assets/js/site.js"></script>
+  </body>
+</html>
