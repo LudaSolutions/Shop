@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Order Tracker | Luda Atelier</title>
+    <meta name="description" content="Check the current status of your Luda Atelier order.">
+    <link rel="stylesheet" href="assets/css/style.css">
+  </head>
+  <body>
+    <div data-header></div>
+
+    <main>
+      <section class="page-hero compact-hero tracker-hero">
+        <div>
+          <h1>Order Tracker</h1>
+          <p class="lead">Enter your order number and email to see the current status of your order.</p>
+        </div>
+      </section>
+
+      <section class="page section tracker-section">
+        <div class="tracker-layout">
+          <form class="tracker-form" data-order-tracker-form>
+            <label>
+              <span>Order number</span>
+              <input type="text" name="orderNumber" autocomplete="off" placeholder="Example: LUDA-1001" required>
+            </label>
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" autocomplete="email" placeholder="name@example.com" required>
+            </label>
+            <button class="text-button tracker-submit" type="submit">Check status</button>
+          </form>
+
+          <div class="tracker-result" data-order-tracker-result hidden>
+            <p class="tracker-result-kicker">Order status</p>
+            <h2 data-order-status>Processing</h2>
+            <p data-order-message>Your order is being prepared.</p>
+            <dl class="tracker-meta">
+              <div>
+                <dt>Order</dt>
+                <dd data-order-number>-</dd>
+              </div>
+              <div>
+                <dt>Updated</dt>
+                <dd data-order-updated>-</dd>
+              </div>
+            </dl>
+            <ol class="tracker-steps" aria-label="Order progress">
+              <li data-status-step="processing">Processing</li>
+              <li data-status-step="in production">In production</li>
+              <li data-status-step="ready to ship">Ready to ship</li>
+              <li data-status-step="shipped">Shipped</li>
+              <li data-status-step="delivered">Delivered</li>
+            </ol>
+          </div>
+        </div>
+
+        <p class="tracker-note">
+          Statuses are updated manually after your order is reviewed, prepared and shipped.
+          If your order cannot be found, check the email spelling or contact Luda Atelier.
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <span>Luda Atelier by Luda Solutions</span>
+        <span>Custom orders, wholesale inquiries and collaborations are welcome.</span>
+      </div>
+    </footer>
+    <script src="assets/js/site.js"></script>
+  </body>
+</html>
