@@ -820,7 +820,7 @@ h3 {
 
 .jetform-frame-wrap {
   width: 100vw;
-  min-height: 1800px;
+  min-height: 980px;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
   border: 0;
@@ -832,8 +832,8 @@ h3 {
   display: block;
   width: 100vw;
   max-width: none;
-  height: 1800px;
-  min-height: 1800px;
+  height: 1240px;
+  min-height: 980px;
   border: 0;
 }
 
@@ -1464,12 +1464,12 @@ h3 {
   }
 
   .jetform-frame-wrap {
-    min-height: 2100px;
+    min-height: 1120px;
   }
 
   .jetform-frame-wrap iframe {
-    height: 2100px;
-    min-height: 2100px;
+    height: 1480px;
+    min-height: 1120px;
   }
 }
 
@@ -1618,12 +1618,12 @@ h3 {
   }
 
   .jetform-frame-wrap {
-    min-height: 2600px;
+    min-height: 1340px;
   }
 
   .jetform-frame-wrap iframe {
-    height: 2600px;
-    min-height: 2600px;
+    height: 1780px;
+    min-height: 1340px;
   }
 
   .process-step strong {
