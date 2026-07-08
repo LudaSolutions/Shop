@@ -289,6 +289,76 @@ function setupJetFormLinks() {
   });
 }
 
+function setupJotformFrameResize() {
+  const frames = Array.from(
+    document.querySelectorAll("[data-jetform-order-frame], [data-jetform-contact-frame]"),
+  ).filter((frame) => frame instanceof HTMLIFrameElement);
+
+  if (frames.length === 0 || window.__ludaJotformResizeReady) return;
+  window.__ludaJotformResizeReady = true;
+
+  function fallbackMinHeight() {
+    if (window.innerWidth <= 640) return 1340;
+    if (window.innerWidth <= 1040) return 1120;
+    return 980;
+  }
+
+  function findFrame(formId) {
+    if (formId) {
+      const byId = document.getElementById(`JotFormIFrame-${formId}`);
+      if (byId instanceof HTMLIFrameElement) return byId;
+
+      const byData = document.querySelector(`[data-jotform-form-id="${formId}"]`);
+      if (byData instanceof HTMLIFrameElement) return byData;
+    }
+
+    return frames[0] || null;
+  }
+
+  function setFrameHeight(frame, height) {
+    if (!(frame instanceof HTMLIFrameElement)) return;
+
+    const numericHeight = Number.parseInt(String(height), 10);
+    if (!Number.isFinite(numericHeight) || numericHeight < 300) return;
+
+    const nextHeight = Math.min(Math.max(numericHeight + 30, fallbackMinHeight()), 5200);
+    frame.style.height = `${nextHeight}px`;
+    frame.style.minHeight = `${nextHeight}px`;
+
+    const wrap = frame.closest(".jetform-frame-wrap");
+    if (wrap instanceof HTMLElement) {
+      wrap.style.minHeight = `${nextHeight}px`;
+    }
+  }
+
+  window.addEventListener("message", (event) => {
+    const origin = String(event.origin || "");
+    if (origin && !origin.includes("jotform")) return;
+
+    if (typeof event.data === "string") {
+      const parts = event.data.split(":");
+      const action = parts[0];
+
+      if (action === "setHeight") {
+        setFrameHeight(findFrame(parts[2] || parts[parts.length - 1]), parts[1]);
+      }
+
+      if (action === "scrollIntoView") {
+        findFrame(parts[1] || parts[parts.length - 1])?.scrollIntoView({ behavior: "smooth" });
+      }
+      return;
+    }
+
+    if (event.data && typeof event.data === "object") {
+      const data = event.data;
+      const action = String(data.type || data.action || data.event || "");
+      if (action.toLowerCase().includes("height")) {
+        setFrameHeight(findFrame(data.formId || data.id), data.height || data.frameHeight);
+      }
+    }
+  });
+}
+
 function setupKitFilters() {
   const grid = document.querySelector("[data-kit-grid]");
   if (!grid) return;
@@ -536,6 +606,7 @@ function initSite() {
   runSafely("hover galleries", setupHoverGalleries);
   runSafely("color strips", setupColorStrips);
   runSafely("Jotform links", setupJetFormLinks);
+  runSafely("Jotform frame resize", setupJotformFrameResize);
   runSafely("kit filters", setupKitFilters);
   runSafely("size guide", setupSizeGuide);
   runSafely("order tracker", setupOrderTracker);
