@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bespoke Order | Luda Atelier</title>
+    <meta name="description" content="Place a bespoke custom bag order with Luda Atelier.">
+    <link rel="stylesheet" href="assets/css/style.css">
+  </head>
+  <body>
+    <div data-header></div>
+
+    <main class="jetform-page">
+      <section class="jetform-full" id="jetform-order">
+        <div class="jetform-full-head">
+          <h1>Custom order form</h1>
+          <p class="lead">Select your bag style, fabric, color, quantity and personalization details.</p>
+        </div>
+
+        <div class="jetform-frame-wrap">
+          <iframe
+            data-jetform-order-frame
+            src="https://form.jotform.com/LudaSolutions/OrderForm"
+            title="Luda Atelier bespoke order form"
+            loading="eager"
+            allow="geolocation; microphone; camera; fullscreen; payment"
+          ></iframe>
+          <div class="form-placeholder" data-jetform-order-placeholder hidden>
+            <div>
+              <h3>Order form</h3>
+              <p>If the embedded form does not load, open the secure Jotform order page.</p>
+              <a class="text-button" href="https://form.jotform.com/LudaSolutions/OrderForm">Open order form</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      (function () {
+        var frame = document.querySelector("[data-jetform-order-frame]");
+        if (!frame) return;
+        var product = new URLSearchParams(window.location.search).get("product");
+        if (!product) return;
+        var formUrl = new URL(frame.src);
+        formUrl.searchParams.set("product", product);
+        frame.src = formUrl.toString();
+      })();
+    </script>
+    <script src="assets/js/site.js"></script>
+  </body>
+</html>
